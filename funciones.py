@@ -25,7 +25,7 @@ def Bollinger_Bands(df, window, ticker):
     """
     df['MA'] = df['Close'].rolling(window=window).mean()
     std = df['Close'].rolling(window=window).std()
-    df['BB_Upper'] = [df['MA'][i] + 2 * std[i] for i in range(0,len(df['MA']))]
+    df['BB_Upper'] = [df['MA'][i] + 2 * std[i] for i in range(0, len(df['MA']))]
     df['BB_Lower'] = [df['MA'][i] - 2 * std[i] for i in range(0, len(df['MA']))]
 
     # Graficar velas con bandas de bolinger
@@ -192,13 +192,14 @@ def f_precios_masivos(p0_fini, p1_ffin, p2_gran, p3_inst, p4_oatk, p5_ginc):
 
         return r_df_final
 
+
+# -- --------------------------------------------------------- FUNCION: Toma de decision -- #
 def accion(df, ticker):
     if df['Close'].iloc[-4] < df['BB_Lower'].iloc[-3] and \
             df['Close'].iloc[-3] > df['BB_Lower'].iloc[-2] and \
             df['Close'].iloc[-2] > df['BB_Lower'].iloc[-1]:
-
         acc = "Buy"
-        
+
     if df['Close'].iloc[-4] > df['BB_Upper'].iloc[-3] and \
             df['Close'].iloc[-3] < df['BB_Upper'].iloc[-2] and \
             df['Close'].iloc[-2] < df['BB_Upper'].iloc[-1]:
@@ -209,4 +210,4 @@ def accion(df, ticker):
 
         acc = "Hold"
 
-    return print(ticker, ": ",acc)
+    return print(ticker, ": ", acc)
