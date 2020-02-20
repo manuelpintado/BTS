@@ -195,6 +195,12 @@ def f_precios_masivos(p0_fini, p1_ffin, p2_gran, p3_inst, p4_oatk, p5_ginc):
 
 # -- --------------------------------------------------------- FUNCION: Toma de decision -- #
 def accion(df, ticker):
+    """
+
+    :param df: Dataframe con datos de activo y datos de bandas de bollinger
+    :param ticker: Activo que se esta calculando
+    :return: Print de decision Buy, Sell, Hold
+    """
     if df['Close'].iloc[-4] < df['BB_Lower'].iloc[-3] and \
             df['Close'].iloc[-3] > df['BB_Lower'].iloc[-2] and \
             df['Close'].iloc[-2] > df['BB_Lower'].iloc[-1]:
