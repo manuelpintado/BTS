@@ -24,7 +24,7 @@ for ticker in OA_In:
                                  p3_inst=ticker, p4_oatk=datos.token, p5_ginc=4900)
 
     # Calcular bandas de bollinger
-    df_pe = fn.Bollinger_Bands(df=df_pe, window=25, ticker=ticker)
+    df_pe = fn.Bollinger_Bands(df=df_pe, window=20, ticker=ticker)
 
     fn.accion(df_pe, ticker) #Funcion para tomar decision
 

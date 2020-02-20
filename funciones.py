@@ -29,8 +29,8 @@ def Bollinger_Bands(df, window, ticker):
     df['BB_Lower'] = [df['MA'][i] - 2 * std[i] for i in range(0, len(df['MA']))]
 
     # Graficar velas con bandas de bolinger
-    #vs_grafica1 = vs.g_velas(p0_de=df, ticker=ticker)
-    #vs_grafica1.show()
+    # vs_grafica1 = vs.g_velas(p0_de=df, ticker=ticker)
+    # vs_grafica1.show()
 
     return df
 
@@ -204,16 +204,13 @@ def accion(df, ticker):
     if df['Close'].iloc[-4] < df['BB_Lower'].iloc[-3] and \
             df['Close'].iloc[-3] > df['BB_Lower'].iloc[-2] and \
             df['Close'].iloc[-2] > df['BB_Lower'].iloc[-1]:
-        acc = "Buy"
+
+        return print(ticker, ": Buy")
 
     if df['Close'].iloc[-4] > df['BB_Upper'].iloc[-3] and \
             df['Close'].iloc[-3] < df['BB_Upper'].iloc[-2] and \
             df['Close'].iloc[-2] < df['BB_Upper'].iloc[-1]:
 
-        acc = "Sell"
+        return print(ticker, ": Sell")
 
-    else:
-
-        acc = "Hold"
-
-    return print(ticker, ": ", acc)
+    return print(ticker, ": Hold")
